@@ -7,18 +7,15 @@ import { Alumno } from '../model/alumno_model';
   providedIn: 'root'
 })
 export class AlumnoService {
-  // REEMPLAZA ESTA URL SI ESTÁS EN CODESPACES:
-  // private apiUrl = 'https://tu-url-de-codespace-8080.app.github.dev/api/alumnos';
-  private apiUrl = 'http://localhost:8080/api/alumnos';
+
+  private apiUrl = 'https://opulent-space-lamp-q7jv54q4447ph4jgq-8080.app.github.dev/api/alumnos';
 
   constructor(private http: HttpClient) { }
 
-  // Método GET para listar
   listar(): Observable<Alumno[]> {
     return this.http.get<Alumno[]>(this.apiUrl);
   }
 
-  // Método DELETE para eliminar
   eliminar(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
