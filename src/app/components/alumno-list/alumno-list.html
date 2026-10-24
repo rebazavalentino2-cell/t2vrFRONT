@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Gestión de Alumnos</h2>
+
+  <!-- Mensaje de Error -->
+  <div *ngIf="mensajeError" class="error-alerta">
+    {{ mensajeError }}
+  </div>
+
+  <table class="tabla-alumnos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombres</th>
+        <th>Carrera</th>
+        <th>Ciclo</th>
+        <th>Promedio</th>
+        <th>Estado Académico</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alumno of alumnos">
+        <td>{{ alumno.id }}</td>
+        <td>{{ alumno.nombres }}</td>
+        <td>{{ alumno.carrera }}</td>
+        <td>{{ alumno.ciclo }}</td>
+        <td>{{ alumno.promedio }}</td>
+        <!-- Aplicamos un color según el estado -->
+        <td [ngClass]="{'regular': alumno.estadoAcademico === 'REGULAR', 'riesgo': alumno.estadoAcademico === 'EN RIESGO'}">
+          {{ alumno.estadoAcademico }}
+        </td>
+        <td>
+          <button class="btn-eliminar" (click)="eliminarAlumno(alumno.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
